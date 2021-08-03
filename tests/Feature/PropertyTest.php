@@ -47,15 +47,20 @@ class PropertyTest extends TestCase
     }
 
     public function test_CanUpdateProperty(){
-       
-        $property = Property::factory(1)->create([
-            'title' => 'nice house',
-       ]);
 
-       dd($property);
-       $response= $this->put(route('update', $property->id), [
+        $product = $this->post(route('create'), [
+            'title'=> 'nice House',
+            'price'=> '1000000',
+            'location'=> 'somewhere',
+            'operationType'=> 'sale',
+            'type'=> 'house',
+            'rooms'=> '2',
+            'baths'=> '3',
+            'agencyID'=> '27749y749'
+            ]);
+
+       $response= $this->put(route('update', 1), [
         'title'=> 'awesome House',
-     
         ]);     
 
         $response->assertStatus(200)

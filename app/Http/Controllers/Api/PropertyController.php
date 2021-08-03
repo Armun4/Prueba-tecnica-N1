@@ -30,9 +30,10 @@ class PropertyController extends Controller
         $product->save();
         return response()->json($property, 200);
     }
-    public function uptade(Request $request, $id){
-       
-        $property = Property::update([
+    public function update(Request $request, $id){
+        
+        $property = Property::find($id);
+        $property->update([
             'title'=>$request->title,
             'price'=>$request->price,
             'location'=>$request->location,
@@ -43,9 +44,8 @@ class PropertyController extends Controller
             'agencyID'=>$request->agencyID
             ]);
 
-        $property->save();
-
-
+        $property->save();  
+        return response()->json($property, 200);
     }
 
 

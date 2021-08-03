@@ -30,7 +30,7 @@ class PropertyFactory extends Factory
             'type' => $this->faker->word(),
             'rooms' => $this->faker->randomDigit(),
             'baths' => $this->faker->randomDigit(),
-            'agencyID' => $this->faker->unique()->ean13()
+            'agencyID' => $this->faker->isbn13(),
         ];
     }
 

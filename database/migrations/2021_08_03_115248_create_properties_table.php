@@ -16,7 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('agencyID');
+            $table->string('agencyID')->default('E&V');
             $table->bigInteger('price')->default('100');
             $table->string('location');
             $table->string('operationType');
