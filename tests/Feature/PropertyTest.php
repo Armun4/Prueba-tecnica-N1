@@ -28,7 +28,7 @@ class PropertyTest extends TestCase
     }
 
     public function test_CanCreateProperty()
-    {   
+    {
         $response = $this->post(route('create'), [
         'title'=> 'nice House',
         'price'=> '1000000',
@@ -39,7 +39,7 @@ class PropertyTest extends TestCase
         'baths'=> '3',
         'agencyID'=> '27749y749'
         ]);
-        
+
         $response = $this->get(route('index'));
         $response->assertStatus(200)
             ->assertJsonCount(1)
@@ -48,23 +48,13 @@ class PropertyTest extends TestCase
 
     public function test_CanUpdateProperty(){
 
-        $product = $this->post(route('create'), [
-            'title'=> 'nice House',
-            'price'=> '1000000',
-            'location'=> 'somewhere',
-            'operationType'=> 'sale',
-            'type'=> 'house',
-            'rooms'=> '2',
-            'baths'=> '3',
-            'agencyID'=> '27749y749'
-            ]);
+        Property::factory(1)->create();
 
-       $response= $this->put(route('update', 1), [
+       $response= $this->patch('api/properties/1', [
         'title'=> 'awesome House',
-        ]);     
+        ]);
 
         $response->assertStatus(200)
-        ->assertJsonCount(1)
         ->assertJsonFragment(['title' => 'awesome House']);
 
     }

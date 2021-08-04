@@ -21,4 +21,4 @@ use App\Http\Controllers\Api\PropertyController;
 
 Route::get('/properties', [PropertyController::class, 'index'])->name('index');
 Route::post('/properties', [PropertyController::class, 'create'])->name('create');
-Route::put('/properties/{id}', [PropertyController::class, 'update'])->name('update');
+Route::patch('/properties/{id}', [PropertyController::class, 'update'])->name('update');
