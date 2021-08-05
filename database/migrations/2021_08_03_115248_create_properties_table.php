@@ -18,7 +18,7 @@ class CreatePropertiesTable extends Migration
             $table->string('title');
             $table->string('agencyID')->default('E&V');
             $table->bigInteger('price')->default('100');
-            $table->string('location');
+            $table->json('location');
             $table->string('operationType');
             $table->string('type');
             $table->string('rooms');

@@ -19,4 +19,8 @@ class Property extends Model
         'baths',
         'agencyID'
     ];
+
+    protected $casts = [
+        'location' => 'array'
+    ];
 }

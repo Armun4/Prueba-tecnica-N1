@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Spatie\QueryBuilder\QueryBuilder;
 
 
 
@@ -12,8 +13,9 @@ class PropertyController extends Controller
 {
     public function index()
     {
-        $properties = Property::all();
-
+        $properties = QueryBuilder::for(Property::class)
+            ->allowedFilters('agencyID')
+            ->get();
         return response()->json($properties, 200);
     }
     public function create(Request $request)
@@ -36,8 +38,6 @@ class PropertyController extends Controller
     {
 
         $property = Property::find($id);
-
-
 
 
         $property->update([
